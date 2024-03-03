@@ -20,7 +20,7 @@ const TestMap = () => {
     longitude: 0
   })
   useEffect(() => {
-    axios.get(`${import.meta.env.BACK_URL}/api/form/getaccidents/` + localStorage.getItem('token'), { crossdomain: true })
+    axios.get(`${import.meta.env.VITE_BACK_URL}/api/form/getaccidents/` + localStorage.getItem('token'), { crossdomain: true })
       .then(res => {
         setData(res.data.message)
         console.log(data)

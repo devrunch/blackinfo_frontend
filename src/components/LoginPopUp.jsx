@@ -8,7 +8,7 @@ const LoginPopUp = ( {toggleState, setuser} ) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleLogin = async () => {
-     axios.post(`${import.meta.env.BACK_URL}/api/user/login`, {
+     axios.post(`${import.meta.env.VITE_BACK_URL}/api/user/login`, {
        email: email,
        password: password,
      })
@@ -30,11 +30,10 @@ const LoginPopUp = ( {toggleState, setuser} ) => {
         toast(error.response.data.message);
       });
   };
-
   const handleRegister = async () => {
     console.log("here")
     try{
-      const response = await fetch(`${import.meta.env.BACK_URL}/api/user/register`, {
+      const response = await fetch(`${import.meta.env.VITE_BACK_URL}/api/user/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,20 +41,21 @@ const LoginPopUp = ( {toggleState, setuser} ) => {
       body: JSON.stringify({ email, password }),
     });
     const data = await response.json();
+    console.log(data)
     if(data.status==0){
       toast("User already exists")
     }
     else{
       toast("User registered successfully")
+      console.log(data)
+      setuser(data);
       window.document.location.reload();
-
     }
   }catch(err){
     console.log(err)
 
   }
-    console.log(data)
-    setuser(data);
+    
   };
   return (
     <Tabs.Root className="TabsRoot" style={{zIndex:"334"}} defaultValue="tab1">
