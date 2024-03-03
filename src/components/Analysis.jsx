@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import 'mapbox-gl/dist/mapbox-gl.css/'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import ReactMapGl, { Marker } from 'react-map-gl'

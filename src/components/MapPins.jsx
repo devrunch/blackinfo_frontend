@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, Marker } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css/'  
+
 
 const MapWithPins = ({ locations }) => {
   const [viewport, setViewport] = React.useState({
