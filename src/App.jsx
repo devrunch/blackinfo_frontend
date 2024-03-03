@@ -36,12 +36,12 @@ function App() {
         <Navbar user={userEmail} setUser={setUserEmail} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="Accidentform" element={<Form />} />
-          <Route path="siteInvestigation" element={<SiteInvestigation />} />
-          <Route path="identification" element={<Identification />} />
-          <Route path="aqusition" element={<Aqusition />} />
-          <Route path="analysis" element={<Mptp />} />
-          <Route path="contact" element={<ContactForm />} />
+          <Route path="/Accidentform" element={<Form />} />
+          <Route path="/siteInvestigation" element={<SiteInvestigation />} />
+          <Route path="/identification" element={<Identification />} />
+          <Route path="/aqusition" element={<Aqusition />} />
+          <Route path="/analysis" element={<Mptp />} />
+          <Route path="/contact" element={<ContactForm />} />
           <Route path="/analysis/:loc" element={<AccidentAnalysis />} />
           <Route path="/test" element={<AccidentAnalysis />} />
         </Routes>
