@@ -1,4 +1,5 @@
 import TiltComponent from './tiltComponent'
+import { Link } from 'react-router-dom'
 const Hero = () => {
   return (
     <div className="bg-gray-200 flex relative z-20 items-center overflow-hidden">
