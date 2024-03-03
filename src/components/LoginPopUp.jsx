@@ -8,7 +8,7 @@ const LoginPopUp = ( {toggleState, setuser} ) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleLogin = async () => {
-     axios.post('https://blackinfo-backend.onrender.com/api/user/login', {
+     axios.post('http://localhost:3000/api/user/login', {
        email: email,
        password: password,
      })
@@ -34,7 +34,7 @@ const LoginPopUp = ( {toggleState, setuser} ) => {
   const handleRegister = async () => {
     console.log("here")
     try{
-      const response = await fetch('http://:3000/api/user/register', {
+      const response = await fetch('http://localhost:3000/api/user/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
