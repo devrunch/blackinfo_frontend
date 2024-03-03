@@ -23,7 +23,7 @@ const SiteInvestigation = () => {
     });
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/api/form/siteInvestigation/' + localStorage.getItem("token"), (siteReference))
+        await axios.post('https://blackinfo-backend.onrender.com/api/form/siteInvestigation/' + localStorage.getItem("token"), (siteReference))
           .then((response) => {
             toast(`Successfully submitted form!`);
              setTimeout(() => {
