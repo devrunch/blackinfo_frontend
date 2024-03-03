@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
 
-      const response = await fetch('http://localhost:3000/api/user/profile/' + localStorage.getItem('token'));
+      const response = await fetch(`${import.meta.env.BACK_URL}/api/user/profile/` + localStorage.getItem('token'));
       const data = await response.json();
       console.log(data)
       if (data.status === 1) {

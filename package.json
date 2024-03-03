@@ -18,6 +18,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/themes": "^2.0.3",
     "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
     "heatmap.js": "^2.0.5",
     "leaflet": "^1.9.4",
     "mapbox-gl": "^3.1.2",

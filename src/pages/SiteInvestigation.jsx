@@ -23,7 +23,7 @@ const SiteInvestigation = () => {
     });
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3000/api/form/siteInvestigation/' + localStorage.getItem("token"), (siteReference))
+        await axios.post(`${import.meta.env.BACK_URL}/api/form/siteInvestigation/` + localStorage.getItem("token"), (siteReference))
           .then((response) => {
             toast(`Successfully submitted form!`);
              setTimeout(() => {

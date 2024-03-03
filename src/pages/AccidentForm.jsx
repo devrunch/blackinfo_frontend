@@ -59,7 +59,7 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     accident["vehicles"] = cars;
-    axios.post('http://localhost:3000/api/form/accident/' + localStorage.getItem("token"), ({...accident,longitude:loc.longitude,latitude:loc.latitude}))
+    axios.post(`${import.meta.env.BACK_URL}/api/form/accident/` + localStorage.getItem("token"), ({...accident,longitude:loc.longitude,latitude:loc.latitude}))
       .then((response) => {
         alert(`Successfully added accident!`);
         navigate("/analysis")

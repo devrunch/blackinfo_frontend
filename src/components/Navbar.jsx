@@ -7,7 +7,7 @@ const Navbar = ({user,setUser}) => {
     const [loginTab, setLoginTab] = useState(false);
     function signinclick(){
         if(loginTab)
-        setLoginTab(false)
+        setLoginTab(false)  
         else
         setLoginTab(true)
     }
