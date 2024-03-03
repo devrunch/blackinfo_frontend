@@ -2,6 +2,7 @@ import Hero from "../components/Hero.jsx"
 import FeaturesBlocks from "../components/features-blocks.jsx"
 import Outcome from "../components/Outcome.jsx"
 import ContactForm from "../components/ContactForm.jsx"
+import Analysis from "../components/Analysis.jsx"
 // import CounterMeasure from "./components/CounterMeasure.tsx"
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
         <Hero />
       </main>
         <FeaturesBlocks/>
+        <Analysis/>
         <Outcome/>
         <ContactForm/>
         

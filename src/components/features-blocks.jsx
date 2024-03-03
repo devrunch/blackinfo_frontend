@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import FeaturesBg from '../assets/images/features-bg.png'
-import FeaturesElement from '../assets/images/features-element.png'
 import UpImg from '../assets/images/upload.svg'
+import heatmp from '../assets/images/heatmap.png'
+import clust from '../assets/images/cluster.png'
 export default function Features() {
-  
+
   const [tab, setTab] = useState(1)
 
   const tabs = useRef(null)
@@ -15,7 +16,7 @@ export default function Features() {
 
   useEffect(() => {
     heightFix()
-  }, []) 
+  }, [])
 
   return (
     <section className="relative bg-gray-200 mb-4" >
@@ -34,30 +35,30 @@ export default function Features() {
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6" data-aos="fade-right">
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
                 <h3 className="font-bold text-xl mb-3 text-gray-900">STEPS TO DOCUMENT THE SPOT WITH PHOTOGRAPGS</h3>
-              
+
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
                 <a
-                  className={`flex items-center justify-between text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 1 ? 'bg-gray-700 shadow-md border-gray-700 hover:bg-gray-600':'bg-gray-800 border-transparent'}`}
+                  className={`flex items-center justify-between text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 1 ? 'bg-gray-700 shadow-md border-gray-700 hover:bg-gray-600' : 'bg-gray-800 border-transparent'}`}
                   href="#0"
                   onClick={(e) => { e.preventDefault(); setTab(1); }}
                 >
                   <div>
                     <div className="text-gray-200">
                       <ul className='list-disc ml-3'>
-                        <li>Capture Overview shots,Record landmarks and feature</li>                       
+                        <li>Capture Overview shots,Record landmarks and feature</li>
                         <li>Road condition and debris</li>
                         <li>Damage Details</li>
                       </ul>
                     </div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
-                    <img src={UpImg} className='w-4 h-4'/>
+                    <img src={UpImg} className='w-4 h-4' />
                   </div>
                 </a>
                 <a
-                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-gray-700 shadow-md border-gray-700 hover:bg-gray-600':'bg-gray-800 border-transparent'}`}
+                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-gray-700 shadow-md border-gray-700 hover:bg-gray-600' : 'bg-gray-800 border-transparent'}`}
                   href="#0"
                   onClick={(e) => { e.preventDefault(); setTab(2); }}
                 >
@@ -71,7 +72,7 @@ export default function Features() {
                     </svg>
                   </div>
                 </a>
-                
+
               </div>
             </div>
 
@@ -91,11 +92,10 @@ export default function Features() {
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 -translate-y-16"
                     beforeEnter={() => heightFix()}
-                    unmount={false}                     
+                    unmount={false}
                   >
                     <div className="relative inline-flex flex-col">
-                      <img className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <img className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
+                      <img className="md:max-w-none mx-auto rounded" src={heatmp} width={500} height="462" alt="Features bg" />
                     </div>
                   </Transition>
                   {/* Item 2 */}
@@ -110,30 +110,10 @@ export default function Features() {
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 -translate-y-16"
                     beforeEnter={() => heightFix()}
-                    unmount={false}                     
+                    unmount={false}
                   >
                     <div className="relative inline-flex flex-col">
-                      <img className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <img className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
-                    </div>
-                  </Transition>
-                  {/* Item 3 */}
-                  <Transition
-                    show={tab === 3}
-                    appear={true}
-                    className="w-full"
-                    enter="transition ease-in-out duration-700 transform order-first"
-                    enterFrom="opacity-0 translate-y-16"
-                    enterTo="opacity-100 translate-y-0"
-                    leave="transition ease-in-out duration-300 transform absolute"
-                    leaveFrom="opacity-100 translate-y-0"
-                    leaveTo="opacity-0 -translate-y-16"
-                    beforeEnter={() => heightFix()}
-                    unmount={false}                     
-                  >
-                    <div className="relative inline-flex flex-col">
-                      <img className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <img className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
+                      <img className="md:max-w-none mx-auto rounded" src={clust} width={500} height="462" alt="Features bg" />
                     </div>
                   </Transition>
                 </div>
