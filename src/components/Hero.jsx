@@ -13,18 +13,18 @@ const Hero = () => {
           Our website is dedicated to identifying high-risk road accident spots and providing effective treatment strategies. Through data analysis and community collaboration, we pinpoint hazardous areas, offer insights into their causes, and propose actionable solutions to enhance road safety. Join us in making travel safer for everyone
           </p>
           <div className="flex mt-8">
-            <a
-              href="aqusition"
+            <Link
+              to="aqusition"
               className="uppercase py-2 px-4 rounded-lg bg-blue-900 border-2 border-transparent text-white text-md mr-4 hover:bg-blue-400"
             >
               Upload file
-            </a>
-            <a
-              href="/aqusition#manual"
+            </Link>
+            <Link
+              to="/aqusition#manual"
               className="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-blue-500 text-blue-500  hover:bg-blue-500 hover:text-white text-md"
             >
               Manual Entry
-            </a>
+            </Link>
           </div>
         </div>
         <div className="hidden sm:block sm:w-1/3 lg:w-1/2 relative">

@@ -1,5 +1,6 @@
 import * as Popover from '@radix-ui/react-popover';
 import LoginPopUp from './LoginPopUp';
+import {Link} from 'react-router-dom';
 import { useState } from 'react';
 import logo from '../assets/images/logo.jpg'
 const Navbar = ({user,setUser}) => {
@@ -21,22 +22,22 @@ const Navbar = ({user,setUser}) => {
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <div className="uppercase flex text-gray-900 font-black text-3xl">
                     <img src={logo} className="w-9 h-9 rounded-lg mr-2"alt="" />
-                    <a href="/">BLACKINFO</a>
+                    <Link to="/">BLACKINFO</Link>
                 </div>
                 <div className="flex items-center">
                     <nav className="font-sen text-gray-800   uppercase text-lg lg:flex items-center hidden">
-                        <a href="/aqusition" className="py-2 px-6 flex">
+                        <Link to="/aqusition" className="py-2 px-6 flex">
                             Identification
-                        </a>
-                        <a href="/analysis" className="py-2 px-6 flex">
+                        </Link>
+                        <Link to="/analysis" className="py-2 px-6 flex">
                             Analysis
-                        </a>
-                        <a href="/treatment" className="py-2 px-6 flex">
+                        </Link>
+                        <Link to="/treatment" className="py-2 px-6 flex">
                             Treatment
-                        </a>
-                        <a href="/contact" className="py-2 px-6 flex">
+                        </Link>
+                        <Link href="/contact" className="py-2 px-6 flex">
                             Contact
-                        </a>
+                        </Link>
                         {user!=''?
                        <button className="uppercase py-1 px-2 text-sm font-medium focus:outline-none rounded-lg border focus:z-10 focus:ring-4 focus:ring-gray-700 bg-gray-800 text-gray-300 border-gray-600 hover:text-white hover:bg-gray-700"
                        onClick={logout}
