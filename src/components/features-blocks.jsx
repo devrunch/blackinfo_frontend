@@ -34,20 +34,20 @@ export default function Features() {
             {/* Content */}
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6" data-aos="fade-right">
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
-                <h3 className="font-bold text-xl mb-3 text-gray-900">STEPS TO DOCUMENT THE SPOT WITH PHOTOGRAPGS</h3>
+                <h3 className="font-bold text-xl mb-3 text-gray-900">STEPS TO DOCUMENT THE SPOTS</h3>
 
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
                 <a
                   className={`flex items-center justify-between text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 1 ? 'bg-gray-700 shadow-md border-gray-700 hover:bg-gray-600' : 'bg-gray-800 border-transparent'}`}
-                  href="#0"
+                  href="#0" 
                   onClick={(e) => { e.preventDefault(); setTab(1); }}
                 >
                   <div>
                     <div className="text-gray-200">
                       <ul className='list-disc ml-3'>
-                        <li>Capture Overview shots,Record landmarks and feature</li>
+                        <li>Record landmarks and feature</li>
                         <li>Road condition and debris</li>
                         <li>Damage Details</li>
                       </ul>

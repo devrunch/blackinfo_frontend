@@ -12,7 +12,7 @@ function Home() {
       </main>
         <FeaturesBlocks/>
         <Analysis/>
-        <Outcome/>
+        {/* <Outcome/> */}
         <ContactForm/>
         
 

@@ -21,6 +21,29 @@ const Aqusition = () => {
       setIsUploading(false);
     }
   };
+  const uploadXlsx = () => {
+    setIsUploading(true);
+    setTimeout(() => {
+      setIsUploading(false);
+    }, 2000);
+    if (!uploadedFiles.length) {
+      return;  
+  }
+    const formData = new FormData();
+    uploadedFiles.forEach((file) => {
+      formData.append("file", file);
+    });
+    fetch(`${import.meta.env.VITE_BACK_URL}/upload/xlsx`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUploadedFiles([]);
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <>
       <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
@@ -92,7 +115,7 @@ const Aqusition = () => {
         )}
       </div>
       <div className="mt-5 flex justify-center">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button onClick={uploadXlsx} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Submit
         </button>
       </div>

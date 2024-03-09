@@ -1,7 +1,7 @@
 import { data } from 'autoprefixer';
-import React, { useEffect, useState } from 'react'
-import ReactMapGl, { Marker, Layer, Source } from 'react-map-gl'
-import dt from './data.json'
+import React, { useEffect} from 'react'
+import ReactMapGl, {Layer, Source } from 'react-map-gl'
+import axios from 'axios';
 const token = 'pk.eyJ1IjoicW1pbnQiLCJhIjoiY2xzenVzM2h2MHN5aDJpcm9jYzNnbGpkdiJ9.9bKzJSMYZ1u46Twn9Stg-w';
 const MAX_ZOOM_LEVEL = 9
 const heatmapLayer = {
@@ -40,42 +40,22 @@ const heatmapLayer = {
     // 'heatmap-opacity': ['interpolate', ['linear'], ['zoom'], 7, 1, 9, 0]
   }
 };
-const dat = {
-  "type": "FeatureCollection",
-  "features": [
-      {
-          "type": "Feature",
-          "properties": {
-              
-              "mag": 100000.3,
-              "time": 1507425650893,
-              "felt": null,
-              "tsunami": 0
-          },
-          "geometry": {
-              "type": "Point",
-              "coordinates": [
-                  78.0080745,
-                  27.1766701,
-              -11100.00
-              ]
-          }
-      }]
-}
+
 
 
 const heatMap = ({ data,initPos }) => {
+
   return (
     
     <ReactMapGl
       initialViewState={initPos}
       mapboxAccessToken={token}
       mapStyle={'mapbox://styles/qmint/clt6qqibt002e01qsgzkh1ikk'}
-      // projection={'globe'}
+      projection={'globe'}
     >
 
-      {data && (
-        <Source type="geojson" data='https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson'>
+      {true && (
+        <Source type="geojson" data={data}>
           <Layer {...heatmapLayer} />
         </Source>
       )}

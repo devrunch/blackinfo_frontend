@@ -11,6 +11,7 @@ import SiteInvestigation from "./pages/SiteInvestigation";
 import ContactForm from "./components/ContactForm";
 import HeatMap from './components/heatMap'
 import AccidentAnalysis from "./components/AccidentAnalysis";
+import Chatbot from "./components/Chatbot";
 // import CounterMeasure from "./components/CounterMeasure.tsx"
 function App() {
   const [userEmail, setUserEmail] = useState('');
@@ -45,6 +46,7 @@ function App() {
           <Route path="/analysis/:loc" element={<AccidentAnalysis />} />
           <Route path="/test" element={<AccidentAnalysis />} />
         </Routes>
+        {/* <Chatbot/> */}
         <FooterMain />
       </BrowserRouter>
     </>

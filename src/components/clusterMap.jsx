@@ -37,7 +37,7 @@ const unclusteredPointLayer = {
     }
 };
 
-const clusterMap = ({clusterData}) => {
+const clusterMap = ({clusterData , initPos}) => {
 
     const mapRef = useRef(null);
 
@@ -63,11 +63,7 @@ const clusterMap = ({clusterData}) => {
 
     return (
         <Map
-            initialViewState={{
-                latitude: 40.67,
-                longitude: -103.59,
-                zoom: 3
-            }}
+            initialViewState={initPos}
             mapStyle="mapbox://styles/mapbox/dark-v9"
             mapboxAccessToken={MAPBOX_TOKEN}
             interactiveLayerIds={[clusterLayer.id]}
@@ -77,7 +73,7 @@ const clusterMap = ({clusterData}) => {
             <Source
                 id="earthquakes"
                 type="geojson"
-                data="https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson"
+                data={clusterData}
                 cluster={true}
                 clusterMaxZoom={14}
                 clusterRadius={50}

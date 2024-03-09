@@ -32,9 +32,6 @@ const Navbar = ({user,setUser}) => {
                         <Link to="/analysis" className="py-2 px-6 flex">
                             Analysis
                         </Link>
-                        <Link to="/treatment" className="py-2 px-6 flex">
-                            Treatment
-                        </Link>
                         <Link href="/contact" className="py-2 px-6 flex">
                             Contact
                         </Link>
@@ -70,7 +67,6 @@ const Navbar = ({user,setUser}) => {
                             <div className="flex flex-col text-start space-x-4 z-0 bg-gray-800 rounded-lg lg:hidden" >
                                 <a href="/identification" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Identification</a>
                                 <a href="/analysis" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Analysis</a>
-                                <a href="/treatment" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Treatment</a>
                                 <a href="/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
                                 {user!=''?
                                 <button onClick={logout} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"> Log Out</button>

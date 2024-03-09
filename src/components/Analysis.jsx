@@ -51,7 +51,7 @@ const TestMap = () => {
           {activeAccident ? <>
             <div className='text-gray-900'>
               <p className='mb-2'><span className='font-bold mr-4 '>Coordinates: </span>{activeLoacation.latitude + ":" + activeLoacation.longitude}</p>
-              <p className='mb-2'><span className='font-bold mr-4 '>Coordinates: </span>{activeAccident.dateOfAccident}</p>
+              <p className='mb-2'><span className='font-bold mr-4 '>Coordinates: </span>{`${activeAccident.location.coordinates[1]}:${activeAccident.location.coordinates[0]}`}</p>
               <p className='mb-2'><span className='font-bold mr-4 '>Accident date : </span>{activeAccident.dateOfAccident}</p>
               <p className='mb-2'><span className='font-bold mr-4 '>Fatalities : </span>{activeAccident.noOfFatalities}</p>
               <p className='mb-2'><span className='font-bold mr-4 '>Road Name : </span>{activeAccident.roadName}</p>
