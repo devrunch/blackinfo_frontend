@@ -162,7 +162,7 @@ const AccidentAnalysis = () => {
                 </div>
 
                 <div className=' mt-11 w-screen text-left pb-12 md:pb-16'>
-                    <h1 className="uppercase mt-7 h-10 text-4xl font-extrabold mb-4 text-gray-900">Accident Analysis II</h1>
+                    <h1 className="uppercase mt-7 h-10 text-4xl font-extrabold mb-4 text-gray-900">Accident Analysis Report</h1>
                     <br />
                     <div className='text-black font-bold text-left' dangerouslySetInnerHTML={{ __html: analysis }}></div>
                     {
