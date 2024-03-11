@@ -20,7 +20,7 @@ const questions = [
     "Are the bus stops located in a safe place?",
     "Does the road geometry encourage safe speeds?",
     "Is the road surface adequate? Does it drain properly?",
-    "Are there obstructions in the road or close to the edge?",
+    "Are there no obstructions in the road or close to the edge?",
     "In bridge approach is provided with adequate marking to make the vehicle to align well ahead in the approach itself within the available carriageway width of the bridge"
 ];
 
@@ -37,9 +37,9 @@ const OperationalQuestions = [
     "Would one-way operation make the location safer?",
     "Is the traffic volume causing problems? Are there sufficient gaps in the main road traffic to enable drivers from side roads to enter the main road without excessive delay?",
     "Are there sufficient gaps in the traffic to enable pedestrians to cross the road without excessive delay?",
-    "Are pedestrians crossing the road at the safest places? Can they see whether it is safe to cross?",
+    "Are pedestrians not crossing the road at the safest places? Can they see whether it is safe to cross?",
     "Is there need for effective/selective enforcement or effective/selective maintenance?",
-    "Are buses and bus passengers using the facilities that have been provided for them?"
+    "Are buses and bus passengers not using the facilities that have been provided for them?"
 ];
 
 const SiteInvestigation = () => {
@@ -407,9 +407,9 @@ const SiteInvestigation = () => {
                         <textarea
                             className="w-full border rounded-md p-2 mt-2"
                             placeholder="Add comments..."
-                            required={!isQuestOperational[index]}
+                            required={isQuestOperational[index]}
                             value={commentsOperational[index]}
-                            disabled = {isQuestOperational[index]}
+                            disabled = {!isQuestOperational[index]}
                             onChange={(e) => handleCommentChangeOP(index, e.target.value)}
                         ></textarea>
                     </div>

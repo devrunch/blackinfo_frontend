@@ -209,7 +209,7 @@ const AccidentAnalysis = () => {
                                         }
                                         {
                                             OperationalQuestions.map((que, ind) => {
-                                                if (!val.isQuestOperational[ind])
+                                                if (val.isQuestOperational[ind])
                                                     return <div className='mb-2' >
                                                         <p>{que}</p>
                                                         <p className='text-gray-700'>{val.commentsOperational[ind]}</p>
