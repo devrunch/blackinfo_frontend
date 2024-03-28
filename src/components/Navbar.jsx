@@ -32,7 +32,7 @@ const Navbar = ({user,setUser}) => {
                         <Link to="/analysis" className="py-2 px-6 flex">
                             Analysis
                         </Link>
-                        <Link href="/contact" className="py-2 px-6 flex">
+                        <Link to='/contact' className="py-2 px-6 flex">
                             Contact
                         </Link>
                         {user!=''?

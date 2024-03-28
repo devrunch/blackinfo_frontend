@@ -47,6 +47,8 @@ export default function Features() {
                   <div>
                     <div className="text-gray-200">
                       <ul className='list-disc ml-3'>
+                        <li>Capture Overview shots</li>
+                        <li>Road marking and Signage</li>
                         <li>Record landmarks and feature</li>
                         <li>Road condition and debris</li>
                         <li>Damage Details</li>

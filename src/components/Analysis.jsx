@@ -58,13 +58,12 @@ const TestMap = () => {
               <p className='mb-2'><span className='font-bold mr-4 '>Weather during Accident : </span>{activeAccident.typeOfWeather}</p>
               <p className='mb-2'><span className='font-bold mr-4 '>Type of area : </span>{activeAccident.typeOfArea}</p>
             </div>
-            <button className='text-gray-100 bg-gray-900 px-8 py-2 rounded-md sm:m-auto hover:bg-gray-700 active:bg-black' onClick={() => console.log(data)} >Submit</button> </>
+           </>
             :
             <>
               <div className='text-gray-900'>
                 <p className='mb-2'><span className='font-bold mr-4 '>Coordinates: </span>{activeLoacation.latitude + ":" + activeLoacation.longitude}</p>
               </div>
-              <button className='text-gray-100 bg-gray-700 px-8 py-2 rounded-md sm:m-auto' onClick={() => console.log(data)} disabled>Choose a location</button>
             </>
           }
           {
@@ -75,7 +74,9 @@ const TestMap = () => {
               <button className='m-16 text-gray-100 bg-gray-700 px-8 py-2 rounded-md sm:m-auto ' onClick={() => navigate('/analysis/' + activeLoacation.latitude + ":" + activeLoacation.longitude)} >Analyze this location</button>
             </>
               :
-              <p></p>
+              <>
+              <button className='text-gray-100 bg-gray-700 px-8 py-2 rounded-md sm:m-auto' onClick={() => console.log(data)} disabled>Choose a location</button>
+              </>
           }
         </div>
 
