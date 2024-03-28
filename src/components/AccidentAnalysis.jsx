@@ -100,13 +100,10 @@ const AccidentAnalysis = () => {
                     setInvestigations(res.data.investigations)
                 console.log(res.data.investigations)
             }).catch(err => console.log(err))
-        if (sent) {
-            sent = false
             axios.get(`${import.meta.env.VITE_BACK_URL}/api/form/getanalysis/${loc[0]}/${loc[1]}`, { crossdomain: true })
                 .then(res => {
                     setAnalysis(res.data.message)
                 }).catch(err => console.log(err))
-        }
     }, [])
     return (
         <>
