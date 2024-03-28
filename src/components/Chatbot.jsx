@@ -17,7 +17,8 @@ const Chatbot = () => {
                 frontendVersion: "v1",
                 showPoweredBy: true,
                 theme: "prism",
-                themeColor: "#2563eb"
+                themeColor: "#2563eb",
+                useSessionStorage : true
             })
         }
     }, [])
