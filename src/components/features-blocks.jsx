@@ -59,21 +59,7 @@ export default function Features() {
                     <img src={UpImg} className='w-4 h-4' />
                   </div>
                 </a>
-                <a
-                  className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-gray-700 shadow-md border-gray-700 hover:bg-gray-600' : 'bg-gray-800 border-transparent'}`}
-                  href="#0"
-                  onClick={(e) => { e.preventDefault(); setTab(2); }}
-                >
-                  <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">Mark Accidental Spot</div>
-                    <div className="text-gray-200">Help improve road safety by identifying accident-prone areas on the map. Your contribution aids in creating safer routes and raising awareness potential hazards</div>
-                  </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
-                    <svg className="w-3 h-3 fill-black" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z" fillRule="nonzero" />
-                    </svg>
-                  </div>
-                </a>
+               
 
               </div>
             </div>
