@@ -113,7 +113,7 @@ const AccidentAnalysis = () => {
     }
     return (
         <>
-            <button onClick={()=>{updatestate()}}>hdfffffffffffffffi</button>
+          
             <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
                 <h1 className="uppercase mt-7 h-10 text-4xl font-extrabold mb-4 text-gray-900">Blackspot Analysis Result</h1>
                 <p className="text-xl text-gray-900"></p>
