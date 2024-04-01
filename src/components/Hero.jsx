@@ -10,6 +10,7 @@ const Hero = () => {
             BLACKINFO
             <span className="text-1xl sm:text-3xl"> Your Road Saftey Companion  </span>
           </h1>
+          
           <p className="text-sm sm:text-base text-gray-700">
           Our website is dedicated to identifying high-risk road accident spots and providing effective treatment strategies. Through data analysis and community collaboration, we pinpoint hazardous areas, offer insights into their causes, and propose actionable solutions to enhance road safety. Join us in making travel safer for everyone
           </p>
