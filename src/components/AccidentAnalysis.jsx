@@ -188,7 +188,7 @@ const AccidentAnalysis = () => {
             <div className='w-11/12 m-auto'>
 
                 {
-                    !analysis ? (<><Loader /></>) : (
+                    !analysis ? (<div className="w-full flex items-center justify-center flex-col"><p className='text-2xl font-bold text-black mb-4'>LOADING</p><Loader /></div>) : (
                         <div className='mt-11 w-full text-left pb-12 md:pb-16'>
                             <h1 className="uppercase my-7 h-10 text-4xl font-extrabold mb-10 text-gray-900 transition-transform duration-500 hover:scale-105">Accident Analysis Report</h1>
 
@@ -235,7 +235,7 @@ const AccidentAnalysis = () => {
                     )
                 }
             </div>
-            {investigations.length>0 &&
+            {investigations && investigations.length>0 &&
 
                 <div className='flex flex-wrap mx-10 text-black md:pb-16'>
                     <div className=''>
