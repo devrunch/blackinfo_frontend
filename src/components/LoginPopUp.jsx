@@ -7,6 +7,7 @@ import axios from 'axios';
 const LoginPopUp = ( {toggleState, setuser} ) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordc, setPasswordc] = useState('');
   const handleLogin = async () => {
      axios.post(`${import.meta.env.VITE_BACK_URL}/api/user/login`, {
        email: email,
@@ -85,13 +86,12 @@ const LoginPopUp = ( {toggleState, setuser} ) => {
         <label className="Label" htmlFor="username">
           Password
         </label>
-        <input className="Input" id="username" placeholder='****' onChange={
+        <input type="password" className="Input" id="username" placeholder='****' onChange={
           (e) => {
             setPassword(e.target.value);
           }
         } />
       </fieldset>
-      <a href="" className='text-gray-900 text-xs hover:underline'>Forgot password</a>
       <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
         <button className="Button green" onClick={()=>{handleLogin()}}>Login</button>
       </div>
@@ -124,10 +124,18 @@ const LoginPopUp = ( {toggleState, setuser} ) => {
         <label className="Label" htmlFor="confirmPassword">
           Confirm password
         </label>
-        <input className="Input" id="confirmPassword" type="password" />
+        <input className="Input" id="confirmPassword" type="password" onChange={(e)=> setPasswordc(e.target.value)}/>
+        {
+          password!=passwordc && passwordc.length>0 &&
+          <p className='text-red-400 text-xs my-1'>Password Does'nt Match</p>
+        }
+        {
+          !passwordc &&
+          <p className='text-red-400 text-xs my-1'>Fill all fields</p>
+        }
       </fieldset>
       <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }} onClick={()=>{handleRegister()}}>
-        <button className="Button green" >Register</button>
+        <button className="Button green" disabled={(password!=passwordc && passwordc.length>0)||(!passwordc)} >Register</button>
       </div>
     </Tabs.Content>
     <ToastContainer/>

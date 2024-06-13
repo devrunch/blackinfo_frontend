@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './analysis.css'
+import Loader from './Loader.jsx';
 const token = 'pk.eyJ1IjoicW1pbnQiLCJhIjoiY2xzenVzM2h2MHN5aDJpcm9jYzNnbGpkdiJ9.9bKzJSMYZ1u46Twn9Stg-w';
 
 let dat = {
@@ -92,7 +93,7 @@ const AccidentAnalysis = () => {
                 })
             })
     }, []);
-    
+
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_BACK_URL}/api/form/getnearlocations/${loc[0]}/${loc[1]}`, { crossdomain: true })
             .then(res => {
@@ -101,19 +102,20 @@ const AccidentAnalysis = () => {
                     setInvestigations(res.data.investigations)
                 console.log(res.data.investigations)
             }).catch(err => console.log(err))
-            axios.get(`${import.meta.env.VITE_BACK_URL}/api/form/getanalysis/${loc[0]}/${loc[1]}`, { crossdomain: true })
-                .then(res => {
-                    setAnalysis(res.data.message)
-                }).catch(err => console.log(err))
+        axios.get(`${import.meta.env.VITE_BACK_URL}/api/form/getanalysis/${loc[0]}/${loc[1]}`, { crossdomain: true })
+            .then(res => {
+                console.log(res.data.message)
+                setAnalysis(res.data.message)
+            }).catch(err => console.log(err))
     }, [])
-    const updatestate = ()=>{
+    const updatestate = () => {
         let tem = viewport;
         tem.latitude += 0.0001;
         setViewport(tem)
     }
     return (
         <>
-          
+
             <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
                 <h1 className="uppercase mt-7 h-10 text-4xl font-extrabold mb-4 text-gray-900">Blackspot Analysis Result</h1>
                 <p className="text-xl text-gray-900"></p>
@@ -130,104 +132,165 @@ const AccidentAnalysis = () => {
                     <ClusterMap initPos={viewport} clusterData={dat} />
                 </div>
             </div>
-            <div className='flex flex-wrap m-16 mt-11 max-w-3xl  text-center pb-12 md:pb-16'>
+            <div className='flex flex-wrap m-auto mt-11 w-full text-center pb-12 md:pb-16 overflow-x-auto'>
                 <div>
                     <div>
-                        <h1 className="uppercase mt-7 h-10 text-4xl font-extrabold mb-4 text-gray-900">Accident Analysis</h1>
-
+                        <h1 className="uppercase mt-7 h-10 text-4xl font-extrabold mb-4 text-gray-900 transition-transform duration-500 hover:scale-105">Accident Analysis</h1>
                     </div>
-                    <div className='ml-16 mt-10'>
+                    <div className='mx-5 md:mx-10 mt-10'>
                         <h2 className='text-3xl text-gray-800 font-bold text-left mb-10'>Accident Data</h2>
-                        {nearAccidents && nearAccidents.map((val, ind) => {
-                            return <div className='bg-white rounded-md w-[900px]' key={ind}>
-                                <div className=' flex gap-5 w-full border-b py-6'>
-                                    <div className=' text-left  gap-10 rounded p-2'>
-                                        <p className='font-medium capitalize text-gray-900'>Name  :<span className='font-bold'>{(val.firstName)}</span> </p>
-                                        <p className='font-medium capitalize text-gray-900'>FIR Number :<span className='font-bold'>{(val.firNo)}</span></p>
-                                        <p className='font-medium capitalize text-gray-900'>Collision Type: <span className='font-bold'>{(val.typeOfCollision)}</span></p>
-                                        <p className='font-medium capitalize text-gray-900'>No of Fatalities : <span className='font-bold'>{(val.noOfFatalities)}</span></p>
-                                    </div>
-                                    <div className='text-left  gap-10 rounded p-2'>
-                                        <p className='font-medium capitalize text-gray-900'>Hospitalised  :<span className='font-bold'>{(val.noOfInjuredNeedingHospitalisation)}</span> </p>
-                                        <p className='font-medium capitalize text-gray-900'>Not Hospitalised :<span className='font-bold'>{(val.noOfInjuredNotNeedingHospitalisation)}</span></p>
-                                        <p className='font-medium capitalize text-gray-900'>Road Name: <span className='font-bold'>{(val.roadName)}</span></p>
-                                        <p className='font-medium capitalize text-gray-900'>No of Vehicals Involved : <span className='font-bold'>{(val.noOfVehiclesInvolved)}</span></p>
-                                    </div>
-                                    <div className='text-left  gap-10 rounded p-2'>
-                                        <p className='font-medium capitalize text-gray-900'>Accident City :<span className='font-bold'>{(val.accidentCity)}</span></p>
-                                        <p className='font-medium capitalize text-gray-900'>Type Of Weather : <span className='font-bold'>{(val.typeOfWeather)}</span></p>
-                                        <p className='font-medium capitalize text-gray-900'>Type of Area  :<span className='font-bold'>{(val.typeOfArea)}</span> </p>
-                                        <p className='font-medium capitalize text-gray-900'>Accident Spot : <span className='font-bold'>{(val.accidentSpot)}</span></p>
-                                    </div>
-                                </div>
+                        <div className="overflow-x-auto">
+                            <div className=" bg-white rounded-lg shadow-lg">
+                                <table className="w-full">
+                                    <thead>
+                                        <tr className="bg-gray-50 text-gray-900 uppercase text-xs lg:text-sm leading-normal">
+                                            <th className="py-3 px-4 text-left">Name</th>
+                                            <th className="py-3 px-4 text-left">Collision Type</th>
+                                            <th className="py-3 px-4 text-left">No of Fatalities</th>
+                                            <th className="py-3 px-4 text-left">Hospitalized</th>
+                                            <th className="py-3 px-4 text-left">Not Hospitalized</th>
+                                            <th className="py-3 px-4 text-left">Road Name</th>
+                                            <th className="py-3 px-4 text-left">No of Vehicles Involved</th>
+                                            <th className="py-3 px-4 text-left">Accident City</th>
+                                            <th className="py-3 px-4 text-left">Type Of Weather</th>
+                                            <th className="py-3 px-4 text-left">Type of Area</th>
+                                            <th className="py-3 px-4 text-left">Accident Spot</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="text-gray-800 text-sm lg:text-sm font-normal">
+                                        {nearAccidents && nearAccidents.map((val, ind) => (
+                                            <tr key={ind} className="border-b border-gray-100 hover:bg-gray-300">
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.firstName}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.typeOfCollision}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.noOfFatalities}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.noOfInjuredNeedingHospitalisation}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.noOfInjuredNotNeedingHospitalisation}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.roadName}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.noOfVehiclesInvolved}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.accidentCity}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.typeOfWeather}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.typeOfArea}</td>
+                                                <td className="py-3 px-4 text-left whitespace-nowrap">{val.accidentSpot}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
                             </div>
-                        })}
-                    </div>
-                </div>
-
-                <div className=' mt-11 w-screen text-left pb-12 md:pb-16'>
-                    <h1 className="uppercase mt-7 h-10 text-4xl font-extrabold mb-4 text-gray-900">Accident Analysis Report</h1>
-                    <br />
-                    <div className='text-black font-bold text-left' dangerouslySetInnerHTML={{ __html: analysis }}></div>
-                    {
-                        !analysis && <h1 className='uppercase mt-7 h-10 text-4xl font-extrabold mb-4 text-gray-900'>Loading</h1>
-                    }
-                </div>
-
-            </div>
-            <div className='flex flex-wrap mx-10 text-black md:pb-16'>
-                <div className=''>
-                    <div className='bg-white shadow-md rounded p-6 mb-6'>
-                        <h2 className='text-2xl font-bold mb-4'>Site Investigations</h2>
-                        <ul>
-                            {
-                                investigations && investigations.map((val, ind) => {
-                                    return <li key={ind}>
-                                        <h3 className='text-xl font-semibold mb-2'>{val.state}, {val.district}</h3>
-                                        <p>Road Number: {val.roadNo}</p>
-                                        <p>Description: {val.locationDescription}</p>
-                                        <p>Nearest Police Station: {val.policeStation}</p>
-                                        <p>Land Marks: {val.landmarks}</p>
-                                        <p>BlackSpot Id: {val.blackspotId}</p>
-                                        <p>Type of Black Spot: {val.blackspotType}</p>
-                                        <p>Chainage: {val.chainage_from} : {val.chainage_to}</p>
-                                        <div className='flex'>
-
-                                        {
-                                            val.site_images && val.site_images.map((img, indx) => {
-                                                return <img key={indx} src={img} alt='site image' className='w-full h-[200px] object-cover mb-4' />
-                                            })
-                                        }
-                                        </div>
-                                        <div>
-                                            <h1 className='font-bold text-3xl my-5'>Some Points To Consider</h1>
-                                        </div>
-                                        {
-                                            questions.map((que, ind) => {
-                                                if (!val.isQuest[ind])
-                                                    return <div className='mb-2'  >
-                                                        <p>{que}</p>
-                                                        <p className='text-gray-700'>Comment : {val.comments[ind]}</p>
-                                                    </div>
-                                            })
-                                        }
-                                        {
-                                            OperationalQuestions.map((que, ind) => {
-                                                if (val.isQuestOperational[ind])
-                                                    return <div className='mb-2' >
-                                                        <p>{que}</p>
-                                                        <p className='text-gray-700'>{val.commentsOperational[ind]}</p>
-                                                    </div>
-                                            })
-                                        }
-                                    </li>
-                                })
-                            }
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
+
+
+
+
+            <div className='w-11/12 m-auto'>
+
+                {
+                    !analysis ? (<><Loader /></>) : (
+                        <div className='mt-11 w-full text-left pb-12 md:pb-16'>
+                            <h1 className="uppercase my-7 h-10 text-4xl font-extrabold mb-10 text-gray-900 transition-transform duration-500 hover:scale-105">Accident Analysis Report</h1>
+
+                            <div className='text-black font-bold text-left mb-8 bg-gray-100 p-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-gray-200'>
+                                <h2 className='text-3xl my-2'>Report of All Accidents</h2>
+                                <div className="pl-4 my-4 border-l-4 border-gray-300  transition-transform duration-500 hover:scale-105">
+                                    <p className="hover:text-black transition-colors duration-300">Fatalities: {analysis.accident_analysis_report.fatalities}</p>
+                                </div>
+                                <div className="pl-4 my-4 border-l-4 border-gray-300  transition-transform duration-500 hover:scale-105">
+                                    <p className="hover:text-black transition-colors duration-300">Hospitalized: {analysis.accident_analysis_report.injured_requiring_hospitalization}</p>
+                                </div>
+                                <div className="pl-4 my-4 border-l-4 border-gray-300  transition-transform duration-500 hover:scale-105">
+                                    <p className="hover:text-black transition-colors duration-300">Average Severity: {analysis.accident_analysis_report.average_severity_of_spot}</p>
+                                </div>
+                                <div className="pl-4 my-4 border-l-4 border-gray-300  transition-transform duration-500 hover:scale-105">
+                                    <p className="hover:text-black transition-colors duration-300">Blackspot: {analysis.accident_analysis_report.blackspot}</p>
+                                </div>
+                                <div className="pl-4 my-4 border-l-4 border-gray-300  transition-transform duration-500 hover:scale-105">
+                                    <p className="hover:text-black transition-colors duration-300">Blackspot Location: {analysis.accident_analysis_report.blackspot_location}</p>
+                                </div>
+
+                            </div>
+
+                            <div className='text-black font-bold text-left mb-8 bg-gray-100 p-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-gray-200'>
+                                <h2 className='text-3xl my-2'>Possible Factors</h2>
+                                {analysis.possible_factors && analysis.possible_factors.map((val, ind) => (
+                                    <div key={ind} className="pl-4 my-4 border-l-4 border-gray-300  transition-transform duration-500 hover:scale-105">
+                                        <p>{val}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className='text-black font-bold text-left bg-gray-100 p-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-gray-200'>
+                                <h2 className='text-3xl my-2'>Counter Measures</h2>
+                                {analysis.countermeasures && analysis.countermeasures.map((val, ind) => (
+                                    <div key={ind} className="pl-4 border-l-4 border-gray-300 my-4 transition-transform duration-500 hover:scale-105">
+                                        <p>{val}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+
+                    )
+                }
+            </div>
+            {investigations.length>0 &&
+
+                <div className='flex flex-wrap mx-10 text-black md:pb-16'>
+                    <div className=''>
+                        <div className='bg-white shadow-md rounded p-6 mb-6'>
+                            <h2 className='text-2xl font-bold mb-4'>Site Investigations</h2>
+                            <ul>
+                                {
+                                    investigations && investigations.map((val, ind) => {
+                                        return <li key={ind}>
+                                            <h3 className='text-xl font-semibold mb-2'>{val.state}, {val.district}</h3>
+                                            <p>Road Number: {val.roadNo}</p>
+                                            <p>Description: {val.locationDescription}</p>
+                                            <p>Nearest Police Station: {val.policeStation}</p>
+                                            <p>Land Marks: {val.landmarks}</p>
+                                            <p>BlackSpot Id: {val.blackspotId}</p>
+                                            <p>Type of Black Spot: {val.blackspotType}</p>
+                                            <p>Chainage: {val.chainage_from} : {val.chainage_to}</p>
+                                            <div className='flex'>
+
+                                                {
+                                                    val.site_images && val.site_images.map((img, indx) => {
+                                                        return <img key={indx} src={img} alt='site image' className='w-full h-[200px] object-cover mb-4' />
+                                                    })
+                                                }
+                                            </div>
+                                            <div>
+                                                <h1 className='font-bold text-3xl my-5'>Some Points To Consider</h1>
+                                            </div>
+                                            {
+                                                questions.map((que, ind) => {
+                                                    if (!val.isQuest[ind])
+                                                        return <div className='mb-2'  >
+                                                            <p>{que}</p>
+                                                            <p className='text-gray-700'>Comment : {val.comments[ind]}</p>
+                                                        </div>
+                                                })
+                                            }
+                                            {
+                                                OperationalQuestions.map((que, ind) => {
+                                                    if (val.isQuestOperational[ind])
+                                                        return <div className='mb-2' >
+                                                            <p>{que}</p>
+                                                            <p className='text-gray-700'>{val.commentsOperational[ind]}</p>
+                                                        </div>
+                                                })
+                                            }
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            }
 
         </>
     )
